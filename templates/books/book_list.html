@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Kitoblar ro'yxati{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">📖 Kitoblar ro'yxati</h2>
+
+{% if books %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for book in books %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text"><strong>Muallif:</strong> {{ book.author }}</p>
+                        <p class="card-text"><strong>Narxi:</strong> ${{ book.price }}</p>
+                        <a href="{% url 'books:book_delete' book.id %}"
+   class="btn btn-sm btn-success">
+   O‘chirish
+</a>
+
+<a href="{% url 'books:book_update' book.id %}"
+   class="btn btn-sm btn-success">
+   Update
+</a>
+                        <p class="card-text"><small class="text-muted">Qo'shilgan vaqti: {{ book.created_at|date:"d M Y H:i" }}</small></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">Hozircha kitoblar mavjud emas.</p>
+{% endif %}
+{% endblock %}

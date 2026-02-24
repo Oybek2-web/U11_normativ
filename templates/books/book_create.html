@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Yangi Kitob{% endblock %}
+
+{% block content %}
+
+<h2>➕ Yangi Kitob Qo‘shish</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label">Nomi</label>
+        {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Muallif</label>
+        {{ form.author }}
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Narxi</label>
+        {{ form.price }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Saqlash</button>
+    <a href="{% url 'books:book_list' %}" class="btn btn-secondary">
+    Bekor qilish
+    </a>
+</form>
+
+{% endblock %}
