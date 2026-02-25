@@ -3,7 +3,7 @@
 {% block title %}Kitobni tahrirlash{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5" xmlns="http://www.w3.org/1999/html">
     <div class="card shadow p-4">
         <h3 class="mb-4">✏️ Kitobni tahrirlash</h3>
 
@@ -25,9 +25,7 @@
                 {{ form.price }}
             </div>
 
-            <button type="submit" class="btn btn-primary">
-                Yangilash
-            </button>
+            <button type="submit" class="btn btn-primary">Yangilash</button>
 
             <a href="{% url 'books:book_list' %}" class="btn btn-secondary">
                 Bekor qilish
