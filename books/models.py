@@ -9,7 +9,6 @@ class BookManager(models.Manager):
         return super().get_queryset().filter(is_deleted=False)
 
 class Books(models.Model):
-    photo = models.ImageField(upload_to='new/', blank=True, null=True)
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -26,5 +25,7 @@ class Books(models.Model):
 
     def __str__(self):
         return self.title
+
+# Create your models heree.
 
 # Create your models heree.
