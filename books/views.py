@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Books
@@ -15,6 +16,7 @@ def book_list(request):
         books = paginator.get_page(page)
     return render(request, "books/book_list.html", {"books": books, 'search': search})
 
+@login_required
 def book_create(request):
     if request.method == 'POST':
         form = BooksForm(request.POST, request.FILES)

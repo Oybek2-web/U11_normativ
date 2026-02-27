@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -20,3 +21,14 @@ class RegisterForm(UserCreationForm):
             raise forms.ValidationError('Ikkita parol bir xil emas')
 
         return cleaned_data
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=200)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        data = self.cleaned_data
+        user = authenticate(username=data.get('username'), password=data.get('password'))
+
+        if not user:
+            raise forms.ValidationError('Username yoki parol xato')
