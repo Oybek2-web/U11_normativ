@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Qo'shildi: {{ book.created_at|date:"d M Y" }}</small>
+                            <small class="text-muted">Vaqt: {{ book.created_at|date:"d M Y" }}</small>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
         <ul class="pagination">
 
             {% if books.has_previous %}
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" href="?page={{ books.previous_page_number }}">Orqaga</a>
             </li>
             {% endif %}
@@ -53,7 +53,7 @@
             <li class="page-item"><a class="page-link" href="#">3</a></li>
 
             {% if books.has_next %}
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" href="?page={{ books.next_page_number }}">Keyingi</a>
             </li>
             {% endif %}
